@@ -758,9 +758,10 @@ vector<string> CloudsVisualSystem::getPresets()
 		presetsFolder.listDir();
 		cout << " found " << presetsFolder.size() << " files " << endl;
 		for(int i = 0; i < presetsFolder.size(); i++){
-			if(presetsFolder.getFile(i).isDirectory() &&
-               ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
-			   presetsFolder.getName(i).at(0) != '_') //use leading _ to hide folders
+			if(presetsFolder.getFile(i)
+			   && presetsFolder.getFile(i).isDirectory()
+			   && ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working"
+			   && presetsFolder.getName(i).at(0) != '_') //use leading _ to hide folders
             {
 				presets.push_back(presetsFolder.getName(i));
 			}
